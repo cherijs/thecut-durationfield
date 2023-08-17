@@ -3,7 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from . import widgets
 from django.core.exceptions import ValidationError
 from django.forms import Field, ChoiceField
-from django.utils.encoding import force_text
+from django.utils.encoding import force_str
 from django.utils.translation import ugettext_lazy as _
 import isodate
 from isodate.isoerror import ISO8601Error
@@ -45,15 +45,15 @@ class RelativeDeltaChoiceField(ChoiceField):
 
     def valid_value(self, value):
         "Check to see if the provided value is a valid choice"
-        text_value = force_text(isodate.duration_isoformat(value))
+        text_value = force_str(isodate.duration_isoformat(value))
         for k, v in self.choices:
             if isinstance(v, (list, tuple)):
                 # This is an optgroup, so look inside the group for options
                 for k2, v2 in v:
-                    if value == k2 or text_value == force_text(k2):
+                    if value == k2 or text_value == force_str(k2):
                         return True
             else:
-                if value == k or text_value == force_text(k):
+                if value == k or text_value == force_str(k):
                     return True
         return False
 
