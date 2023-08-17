@@ -4,7 +4,7 @@ from . import forms, utils
 from datetime import timedelta
 from dateutil.relativedelta import relativedelta
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.core.exceptions import ValidationError
 from isodate.isoerror import ISO8601Error
 import isodate
