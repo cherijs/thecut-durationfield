@@ -29,7 +29,6 @@ setup(
 
     # Packaging
     packages=find_packages(exclude=['docs']),
-    namespace_packages=['thecut'],
     include_package_data=True,
 
     # Dependencies
